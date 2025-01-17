@@ -14,9 +14,9 @@ public class WorkCalendar {
             DayOfWeek.FRIDAY
     );
 
-    public Iterator<LocalDate> iteratorFor(LocalDate date) {
-        return new Iterator<LocalDate>() {
-            private LocalDate current = date;
+    public Iterator<LocalDate> iteratorFor(LocalDate initDate) {
+        return new Iterator<>() {
+            private LocalDate current = initDate;
 
             public boolean hasNext() {
                 return true;
