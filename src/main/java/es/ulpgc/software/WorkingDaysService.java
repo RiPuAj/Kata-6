@@ -26,7 +26,10 @@ public class WorkingDaysService {
         app = Javalin.create()
                 .get("/working-days", ctx -> execute("working-days", ctx.req(), ctx.res()))
                 .get("/working-date", ctx -> execute("working-date", ctx.req(), ctx.res()))
-                .get("/", ctx -> System.out.println("PR"))
+                .get("/", ctx -> ctx.res().getWriter().write(
+                        "COMANDS\n" +
+                        "/working-days?start=YYYY-MM-DD&end=YYYY-MM-DD\n" +
+                        "/working-date?start=YYYY-MM-DD&days=nDays"))
                 .start(port);
     }
 
