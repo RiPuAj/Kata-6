@@ -18,19 +18,22 @@ public class WorkCalendar {
         return new Iterator<>() {
             private LocalDate current = initDate;
 
+            @Override
             public boolean hasNext() {
                 return true;
             }
 
+            @Override
             public LocalDate next() {
                 var next = current.plusDays(1);
-                while(!isWorkingDay(next)) next = current.plusDays(1);
-                return next;
+                while(!isWorkingDay(next)) next = next.plusDays(1);
+                current = next;
+                return current;
             }
         };
     }
 
-    private boolean isWorkingDay(LocalDate next) {
-        return workingDays.contains(next.getDayOfWeek());
+    private boolean isWorkingDay(LocalDate day) {
+        return workingDays.contains(day.getDayOfWeek());
     }
 }
